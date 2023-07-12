@@ -21,6 +21,10 @@ let NavBar = () => {
               <Link className="nav-link active" to="/Contact">Contact</Link>
 
             </li>
+            <li className="nav-item">
+              <Link className="nav-link active" to="/User">User</Link>
+
+            </li>
 
           </ul>
         </div>
