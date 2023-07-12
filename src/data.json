@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Manikanta",
+        "Email": "manikantakare9@gmail.com",
+        "Phone": "9701664470"
+    },
+    {
+        "id": 2,
+        "name": "Vijay Goud",
+        "Email": "vijaygoud6@gmail.com",
+        "Phone": "9701664470"
+    },
+    {
+        "id": 3,
+        "name": "Saikumar",
+        "Email": "saikumar9@gmail.com",
+        "Phone": "9701664470"
+    },
+    {
+        "id": 4,
+        "name": "Srikanth",
+        "Email": "srikanthswalami9@gmail.com",
+        "Phone": "9701664470"
+    },
+    {
+        "id": 5,
+        "name": "ManiSwami",
+        "Email": "maniswamo30360@gmail.com",
+        "Phone": "9701664470"
+    },
+    {
+        "id": 6,
+        "name": "Pavan",
+        "Email": "pavan30360@gmail.com",
+        "Phone": "9505875921"
+    },
+    {
+        "id": 7,
+        "name": "Rajesh",
+        "Email": "rajesh9@gmail.com",
+        "Phone": "6305515709"
+    },
+    {
+        "id": 8,
+        "name": "Raju",
+        "Email": "Raju9@gmail.com",
+        "Phone": "9849559569"
+    },
+    {
+        "id": 9,
+        "name": "Chethan",
+        "Email": "chetan9@gmail.com",
+        "Phone": "9701664470"
+    },
+    {
+        "id": 10,
+        "name": "Sumanth",
+        "Email": "sumanth9@gmail.com",
+        "Phone": "9701664470"
+    }
+]
