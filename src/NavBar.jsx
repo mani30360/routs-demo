@@ -26,6 +26,7 @@ let NavBar = () => {
 
             </li>
 
+
           </ul>
         </div>
       </div>

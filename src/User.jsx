@@ -21,17 +21,19 @@ const User = ({ items }) => {
     };
 
     return (
-        <div className='container'>
+        <div className='Lokshi'>
+            <div className='container'>
 
-            <button onClick={handleSort} className="btn btn-primary" >Sort {sortOrder === 'ascending' ? 'Descending' : 'Ascending'}</button>
+                <button onClick={handleSort} className="btn btn-primary" >Sort {sortOrder === 'ascending' ? 'Descending' : 'Ascending'}</button>
 
-            {sortedData.map((item) => (
-                <div key={item.id}>
-                    <h2>{item.name}</h2>
-                    <p>{item.Email}</p>
-                    <p>{item.Phone}</p>
-                </div>
-            ))}
+                {sortedData.map((item) => (
+                    <div key={item.id}>
+                        <h2>{item.name}</h2>
+                        <p>{item.Email}</p>
+                        <p>{item.Phone}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };

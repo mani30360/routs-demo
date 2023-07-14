@@ -11,14 +11,15 @@ const About = () => {
 
   };
   return (
+    <div className="Lokshi">
+      <div className="container">
 
-    <div className="container">
-
-      <div className="image-container">
-        <div>
-          <h2>{data.name}</h2>
-          <img src={user} alt="user" />
-          <p>{data.Paragrap}</p>
+        <div className="image-container">
+          <div>
+            <h2>{data.name}</h2>
+            <img src={user} alt="user" />
+            <p>{data.Paragrap}</p>
+          </div>
         </div>
       </div>
     </div>
