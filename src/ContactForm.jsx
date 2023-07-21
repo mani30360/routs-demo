@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './ContactForm.css';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Retrieve the data and function from location.state
+  const { editData, dataIndex } = location.state || {};
+  const [formData, setFormData] = useState(editData || {
     firstName: '',
     lastName: '',
     email: '',
@@ -17,7 +21,12 @@ const ContactForm = () => {
     phoneNumber: ''
   });
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    // Set the form data from location.state when it is available
+    if (editData) {
+      setFormData(editData);
+    }
+  }, [editData]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -25,33 +34,6 @@ const ContactForm = () => {
       ...prevFormData,
       [name]: value,
     }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (validateForm()) {
-      // Form submission logic goes here (e.g., API call, etc.)
-      console.log('Form submitted successfully!');
-
-      // Save form data in local storage
-      const storedDataList = JSON.parse(localStorage.getItem('formDataList')) || [];
-      localStorage.setItem('formDataList', JSON.stringify([...storedDataList, formData]));
-
-      // Clear the form fields and errors after successful submission
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        phoneNumber: '',
-      });
-      setErrors({});
-
-      // Navigate to the success page
-      navigate('/success');
-    } else {
-      console.log('Form has errors. Please fix them.');
-    }
   };
 
   const validateForm = () => {
@@ -85,7 +67,7 @@ const ContactForm = () => {
       errors.phoneNumber = 'Phone number is required';
       isValid = false;
     } else if (!/^\d{10}$/.test(formData.phoneNumber)) {
-      errors.phoneNumber = 'Invalid phone number format';
+      errors.phoneNumber = 'Invalid phone number format (10 digits only)';
       isValid = false;
     }
 
@@ -93,12 +75,48 @@ const ContactForm = () => {
     return isValid;
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Validate the form
+    const isValid = validateForm();
+
+    if (isValid) {
+      // Perform the regular form submission logic
+      console.log('Form submitted successfully!');
+      // Save form data in local storage
+      const storedDataList = JSON.parse(localStorage.getItem('formDataList')) || [];
+      if (editData) {
+        // If editing existing data, update the data at the given index
+        storedDataList[dataIndex] = formData;
+      } else {
+        // If adding new data, add it to the end of the list
+        storedDataList.push(formData);
+      }
+      localStorage.setItem('formDataList', JSON.stringify(storedDataList));
+
+      // Clear the form fields and errors after successful submission
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+      });
+      setErrors({});
+
+      // Navigate to the success page
+      navigate('/success');
+    } else {
+      console.log('Form has errors. Please fix them.');
+    }
+  };
+
   return (
     <div className="Raju">
       <div className="row justify-content-center">
         <div className="col-md-8">
           <div>
-            <h1>Contact Form</h1>
+            <h1>{editData ? 'Edit' : 'Contact'} Form</h1>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -148,7 +166,11 @@ const ContactForm = () => {
               />
               {errors.phoneNumber && <div className="invalid-feedback">{errors.phoneNumber}</div>}
             </div>
-            <button type="submit" className="btn btn-primary">Add</button>
+            <div className="Add">
+            <button type="submit" className="btn btn-primary">
+              {editData ? 'Update' : 'Add'}
+            </button>
+            </div>
           </form>
         </div>
       </div>
@@ -156,4 +178,5 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm; 
+export default ContactForm;
+

@@ -5,6 +5,8 @@ import About from './About';
 import ContactForm from './ContactForm';
 import User from './User';
 import Success from './SuccessPage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
       <div className="container-fluid">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Contact" element={<ContactForm />} />
+          <Route path="/ContactForm" element={<ContactForm />} />
           <Route path="/About" element={<About />} />
           <Route path="/User" element={<User />} />
           <Route path="/Success" element={<Success />} />
