@@ -26,6 +26,12 @@ let NavBar = () => {
 
             </li>
 
+            <li className="nav-item">
+              <Link className="nav-link active" to="/Success">List</Link>
+
+            </li>
+
+
 
           </ul>
         </div>
