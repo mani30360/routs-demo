@@ -32,10 +32,10 @@ const SuccessPage = () => {
                 {formDataList.map((formData, index) => (
                     <div key={index} className="card">
                         <div className="card-body">
-                            <p>First Name: {formData.firstName}</p>
-                            <p>Last Name: {formData.lastName}</p>
-                            <p>Email: {formData.email}</p>
-                            <p>Phone Number: {formData.phoneNumber}</p>
+                            <p>{formData.firstName}</p>
+                            <p>{formData.lastName}</p>
+                            <p> {formData.email}</p>
+                            <p> {formData.phoneNumber}</p>
 
                             <button onClick={() => handleEdit(formData, index)} className="btn btn-warning">
                                 <AiFillEdit /> Edit
@@ -49,7 +49,9 @@ const SuccessPage = () => {
                         </div>
                     </div>
                 ))}
-                <Link to="/contactForm" className="btn btn-primary">Add New Contact</Link>
+                <div className='contactForm'>
+                    <Link to="/contactForm" className="btn btn-primary">Add New Contact</Link>
+                </div>
             </div>
         </div>
     );
