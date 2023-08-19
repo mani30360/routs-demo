@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import data from './data.json';
 
-const User = ({ items }) => {
+const User = () => {
     const [sortedData, setSortedData] = useState(data);
     const [sortOrder, setSortOrder] = useState('ascending');
 
